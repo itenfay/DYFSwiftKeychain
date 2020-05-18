@@ -82,7 +82,7 @@ let ret = keychain.getBool("kFirstInstalledAndLaunched")
 
 ```Swift
 let keychain = DYFSwiftKeychain()
-let _ = keychain.delete("kFirstInstalledAndLaunched") // Remove single key
+let _ = keychain.delete("kFirstInstalledAndLaunched") // Remove single key.
 let _ = keychain.clear() // Delete everything from app's Keychain. Does not work on macOS.
 ```
 
@@ -185,8 +185,12 @@ keychain.getData("key1", asReference: true)
 `DYFSwiftKeychain` supports to be used in Objective-C apps.
 
 
+## Demo
+
+`DYFSwiftKeychain` is learned how to use under this [Demo](https://github.com/dgynfi/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift).
+
+
 ## Feedback is welcome
 
 If you notice any issue, got stuck or just want to chat feel free to create an issue. I will be happy to help you.
-
 
