@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
 
   spec.source = { :git => "https://github.com/dgynfi/DYFSwiftKeychain.git", :tag => spec.version }
 
-  spec.source_files    = SwiftKeychain/*.swift"
+  spec.source_files    = "SwiftKeychain/*.swift"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -45,8 +45,8 @@ Pod::Spec.new do |spec|
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"
 
-  spec.requires_arc  = true
   spec.swift_version = "5.0"
+  spec.requires_arc  = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
