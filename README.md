@@ -126,7 +126,7 @@ let s = keychain.get("key12") // Returns "See you tomorrow!"
 We could not get the Keychain synchronization work on macOS.
 
 
-#### Synchronizing keychain items with other devices
+#### Sharing keychain items with other apps
 
 In order to share keychain items between apps on the same device they need to have common *Keychain Groups* registered in *Capabilities > Keychain Sharing* settings. There are online tutorials shows how to set it up.
 
@@ -193,4 +193,3 @@ keychain.getData("key1", asReference: true)
 ## Feedback is welcome
 
 If you notice any issue, got stuck or just want to chat feel free to create an issue. I will be happy to help you.
-
