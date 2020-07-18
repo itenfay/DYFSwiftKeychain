@@ -16,10 +16,10 @@ let p = keychain.get("kUserAccPasscode")
 
 此 Keychain 库包括以下功能：
 
-- 获取、设置和删除字符串、布尔值和数据钥匙串项。
+- 获取、设置和删除字符串、布尔值和数据的钥匙串项。
 - 指定项访问安全级别。
 - 通过 iCloud 同步项。
-- 与其他应用程序共享 Keychain 项。
+- 与其他应用程序共享钥匙串项。
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)&nbsp;
 [![CocoaPods Version](http://img.shields.io/cocoapods/v/DYFSwiftKeychain.svg?style=flat)](http://cocoapods.org/pods/DYFSwiftKeychain)&nbsp;
@@ -80,7 +80,7 @@ keychain.set(true, forKey: "kFirstInstalledAndLaunched")
 let ret = keychain.getBool("kFirstInstalledAndLaunched")
 ```
 
-#### 从 Keychain 移除数据
+#### 从钥匙串移除数据
 
 ```Swift
 let keychain = DYFSwiftKeychain()
