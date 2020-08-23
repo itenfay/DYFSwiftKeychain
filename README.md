@@ -1,12 +1,6 @@
-## [英文文档（English Document）](README-en.md)
-
-
-如果此项目能帮助到你，就请你给[一颗星](https://github.com/dgynfi/DYFSwiftKeychain)。谢谢！
-
-
 ## DYFSwiftKeychain
 
-在钥匙串中存储文本和数据。你可能已经注意到苹果的 Keychain API 有点冗长。此库旨在提供较短的语法完成简单任务：读取/写入指定键的文本值：
+This is used to store text and data in the Keychain. As you probably noticed Apple's keychain API is a bit verbose. This library was designed to provide shorter syntax for accomplishing a simple task: reading/writing text values for specified keys:
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -14,49 +8,51 @@ keychain.set("User Account Passcode", forKey: "kUserAccPasscode")
 let p = keychain.get("kUserAccPasscode")
 ```
 
-此 Keychain 库包括以下功能：
+The Keychain library includes the following features:
 
-- 获取、设置和删除字符串、布尔值和数据的钥匙串项。
-- 指定项访问安全级别。
-- 通过 iCloud 同步项。
-- 与其他应用程序共享钥匙串项。
+- Get, set and delete string, boolean and Data Keychain items.
+- Specify item access security level.
+- Synchronize items through iCloud.
+- Share Keychain items with other apps.
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)&nbsp;
 [![CocoaPods Version](http://img.shields.io/cocoapods/v/DYFSwiftKeychain.svg?style=flat)](http://cocoapods.org/pods/DYFSwiftKeychain)&nbsp;
 ![CocoaPods Platform](http://img.shields.io/cocoapods/p/DYFSwiftKeychain.svg?style=flat)&nbsp;
 
+[Chinese Instructions (中文说明)](README-zh.md)
 
-## QQ群 (ID:614799921)
+
+## Group (ID:614799921)
 
 <div align=left>
 &emsp; <img src="https://github.com/dgynfi/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
 </div>
 
 
-## 安装
+## Installation
 
-使用 [CocoaPods](https://cocoapods.org):
+Using [CocoaPods](https://cocoapods.org):
 
 ``` 
 use_frameworks!
 target 'Your target name'
 
-pod 'DYFSwiftKeychain', '~> 1.0.1'
+pod 'DYFSwiftKeychain', '~> 1.0.2'
 ```
 
-或者从 [SwiftKeychain](https://github.com/dgynfi/DYFSwiftKeychain/tree/master/SwiftKeychain) 目录添加文件。
+Or manually add the files from the [SwiftKeychain](https://github.com/dgynfi/DYFSwiftKeychain/tree/master/SwiftKeychain) directory.
 
 
-## 什么是 Keychain?
+## What's Keychain?
 
-Keychain 是一种安全的存储方式。你可以在其中存储所有类型的敏感数据：用户密码、信用卡号码、秘密令牌等。一旦存储在 Keychain 中，这些信息只对你的应用可用，其他应用看不到。除此之外，操作系统确保这些信息被安全地保存和处理。例如，存储在 Keychain 中的文本不能从 iPhone 备份或其文件系统中提取。苹果建议只在 Keychain 中存储少量数据。如果你需要保护一些大的东西，你可以手动加密它，保存到一个文件，并将密钥存储在 Keychain 中。
+Keychain is a secure storage. You can store all kind of sensitive data in it: user passwords, credit card numbers, secret tokens etc. Once stored in Keychain this information is only available to your app, other apps can't see it. Besides that, operating system makes sure this information is kept and processed securely. For example, text stored in Keychain can not be extracted from iPhone backup or from its file system. Apple recommends storing only small amount of data in the Keychain. If you need to secure something big you can encrypt it manually, save to a file and store the key in the Keychain.
 
 
-## 使用
+## Usage
 
-将 `import DYFSwiftKeychain` 添加到源代码中。
+Add `import DYFSwiftKeychain` to your source code.
 
-#### 写入/读取字符串
+#### String values
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -64,7 +60,7 @@ keychain.set("User Account Passcode", forKey: "kUserAccPasscode")
 let s = keychain.get("kUserAccPasscode")
 ```
 
-#### 写入/读取字节序列
+#### Data values
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -72,7 +68,7 @@ keychain.set(data, forKey: "kCommSecureCode")
 let data = keychain.getData("kCommSecureCode")
 ```
 
-#### 写入/读取布尔值
+#### Boolean values
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -80,7 +76,7 @@ keychain.set(true, forKey: "kFirstInstalledAndLaunched")
 let ret = keychain.getBool("kFirstInstalledAndLaunched")
 ```
 
-#### 从钥匙串移除数据
+#### Removing keys from Keychain
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -89,29 +85,29 @@ let _ = keychain.clear() // Delete everything from app's Keychain. Does not work
 ```
 
 
-## 高级选项
+## Advanced options
 
-#### 钥匙串项访问选项
+#### Keychain item access
 
-使用 `withAccess` 参数指定 Keychain 存储的安全级别。默认情况下使用 `.accessibleWhenUnlocked` 选项。它是限制性最强的选项之一，可以提供良好的数据保护。
+Use `withAccess` parameter to specify the security level of the keychain storage. By default the `.accessibleWhenUnlocked` option is used. It is one of the most restrictive options and provides good data protection.
 
 ```Swift
 let keychain = DYFSwiftKeychain()
 keychain.set("xxx", forKey:"Key1", withAccess: .accessibleWhenUnlocked)
 ```
 
-如果需要应用程序在后台访问钥匙串项，则可以使用 `.accessibleAfterFirstUnlock`。请注意，它比 `.accessibleWhenUnlocked` 选项更不安全。
+You can use `.accessibleAfterFirstUnlock` if you need your app to access the keychain item while in the background. Note that it is less secure than the `.accessibleWhenUnlocked` option.
 
-查看所有可用的 [访问选项](https://github.com/dgynfi/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift) 列表。
+See the list of all available [access options](https://github.com/dgynfi/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift).
 
 
-#### 将钥匙串项与其他设备同步
+#### Synchronizing keychain items with other devices
 
-将  `synchronizable` 属性设置为 `true` 可在用户的多个设备之间启用钥匙串项同步。同步将适用于在其设备上的 iCloud 设置中启用了 Keychain 的用户。
+Set `synchronizable` property to `true` to enable keychain items synchronization across user's multiple devices. The synchronization will work for users who have the "Keychain" enabled in the iCloud settings on their devices.
 
-将 `synchronizable` 属性设置为 `true` 将使用 `set` 方法将该项添加到其他设备，并使用 `get` 命令获取可同步的项。删除可同步项将从所有设备中删除。
+Setting `synchronizable` property to `true` will add the item to other devices with the `set` method and obtain synchronizable items with the `get` command. Deleting a synchronizable item will remove it from all devices.
 
-请注意，您不需要在应用程序的目标中启用 iCloud 或 Keychain 共享功能，使此功能工作。
+Note that you do not need to enable iCloud or Keychain Sharing capabilities in your app's target for this feature to work.
 
 ```Swift
 // The first device
@@ -125,14 +121,14 @@ keychain.synchronizable = true
 let s = keychain.get("key12") // Returns "See you tomorrow!"
 ```
 
-我们无法在 macOS 上进行钥匙串同步工作。
+We could not get the Keychain synchronization work on macOS.
 
 
-#### 与其他应用程序共享钥匙串项
+#### Sharing keychain items with other apps
 
-为了在同一设备上的应用程序之间共享钥匙串项，它们需要在*Capabilities > Keychain Sharing*设置中注册通用*Keychain Groups*。
+In order to share keychain items between apps on the same device they need to have common *Keychain Groups* registered in *Capabilities > Keychain Sharing* settings. 
 
-使用 `accessGroup` 属性访问共享钥匙串项。在下面的示例中，我们指定一个访问组 `9ZU3R2F3D4.com.omg.myapp.KeychainGroup`，它将用于设置、获取和删除 `key1` 项。
+Use `accessGroup` property to access shared keychain items. In the following example we specify an access group "9ZU3R2F3D4.com.omg.myapp.KeychainGroup" that will be used to set, get and delete an item "key1".
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -144,12 +140,12 @@ keychain.delete("key1")
 keychain.clear()
 ```
 
-*注*：watchOS 2.0与其配对设备之间无法共享钥匙串项：https://forums.developer.apple.com/thread/5938
+*Note*: there is no way of sharing a keychain item between the watchOS 2.0 and its paired device: https://forums.developer.apple.com/thread/5938
 
 
-#### 检查操作是否成功
+#### Check if operation was successful
 
-通过检查 `set`, `delete` 和 `clear` 方法的返回值，可以验证它们是否成功完成。这些方法成功时返回 `true`，出错时返回 `false`。
+You can verify if `set`, `delete` and `clear` methods finished successfully by checking their return values. Those methods return `true` on success and `false` on error.
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -161,7 +157,7 @@ if keychain.set("xxx", forKey: "key1") {
 }
 ```
 
-若要获取特定的失败原因，请使用包含上一个操作的结果代码的 `osStatus` 属性。请参见 [Keychain Result Codes](https://developer.apple.com/documentation/security/1542001-security_framework_result_codes).
+To get a specific failure reason use the `osStatus` property containing result code for the last operation. See [Keychain Result Codes](https://developer.apple.com/documentation/security/1542001-security_framework_result_codes).
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -171,9 +167,9 @@ if keychain.osStatus != errSecSuccess { /* Report error */ }
 ```
 
 
-#### 数据引用返回
+#### Returning data as reference
 
-使用 `asReference: true` 参数将数据作为引用返回，这是 [NEVPNProtocol](https://developer.apple.com/documentation/networkextension/nevpnprotocol) 所需的。
+Use the `asReference: true` parameter to return the data as reference, which is needed for [NEVPNProtocol](https://developer.apple.com/documentation/networkextension/nevpnprotocol).
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -182,16 +178,16 @@ keychain.getData("key1", asReference: true)
 ```
 
 
-## 在 ObjC 中使用 DYFSwiftKeychain
+## Using DYFSwiftKeychain from Objective-C
 
-`DYFSwiftKeychain` 支持在 Objective-C 应用程序中使用。
-
-
-## 演示
-
-`DYFSwiftKeychain` 在此 [演示](https://github.com/dgynfi/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift) 下学习如何使用。
+`DYFSwiftKeychain` supports to be used in Objective-C apps.
 
 
-## 欢迎反馈
+## Demo
 
-如果你注意到任何问题，被卡住或只是想聊天，请随意制造一个问题。我乐意帮助你。
+`DYFSwiftKeychain` is learned how to use under this [Demo](https://github.com/dgynfi/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift).
+
+
+## Feedback is welcome
+
+If you notice any issue, got stuck or just want to chat feel free to create an issue. I will be happy to help you.
