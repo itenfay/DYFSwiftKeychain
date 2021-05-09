@@ -37,7 +37,7 @@ Using [CocoaPods](https://cocoapods.org):
 use_frameworks!
 target 'Your target name'
 
-pod 'DYFSwiftKeychain', '~> 1.0.2'
+pod 'DYFSwiftKeychain', '~> 1.0.3'
 ```
 
 Or manually add the files from the [SwiftKeychain](https://github.com/dgynfi/DYFSwiftKeychain/tree/master/SwiftKeychain) directory.

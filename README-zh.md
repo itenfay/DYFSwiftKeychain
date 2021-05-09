@@ -35,7 +35,7 @@ let p = keychain.get("kUserAccPasscode")
 use_frameworks!
 target 'Your target name'
 
-pod 'DYFSwiftKeychain', '~> 1.0.2'
+pod 'DYFSwiftKeychain', '~> 1.0.3'
 ```
 
 或者从 [SwiftKeychain](https://github.com/dgynfi/DYFSwiftKeychain/tree/master/SwiftKeychain) 目录添加文件。
