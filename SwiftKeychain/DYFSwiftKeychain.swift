@@ -1,7 +1,7 @@
 //
 //  DYFSwiftKeychain.swift
 //
-//  Created by dyf on 2016/11/28. ( https://github.com/dgynfi/DYFStore )
+//  Created by dyf on 2016/11/28. ( https://github.com/dgynfi/DYFSwiftKeychain )
 //  Copyright © 2016 dyf. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
