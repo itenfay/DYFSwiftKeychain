@@ -25,7 +25,7 @@ The Keychain library includes the following features:
 ## Group (ID:614799921)
 
 <div align=left>
-&emsp; <img src="https://github.com/dgynfi/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
+&emsp; <img src="https://github.com/chenxing640/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
 </div>
 
 
@@ -37,10 +37,12 @@ Using [CocoaPods](https://cocoapods.org):
 use_frameworks!
 target 'Your target name'
 
-pod 'DYFSwiftKeychain', '~> 1.0.3'
+pod 'DYFSwiftKeychain'
+or
+pod 'DYFSwiftKeychain', '~> 1.1.0'
 ```
 
-Or manually add the files from the [SwiftKeychain](https://github.com/dgynfi/DYFSwiftKeychain/tree/master/SwiftKeychain) directory.
+Or manually add the files from the [SwiftKeychain](https://github.com/chenxing640/DYFSwiftKeychain/tree/master/SwiftKeychain) directory.
 
 
 ## What's Keychain?
@@ -98,7 +100,7 @@ keychain.set("xxx", forKey:"Key1", withAccess: .accessibleWhenUnlocked)
 
 You can use `.accessibleAfterFirstUnlock` if you need your app to access the keychain item while in the background. Note that it is less secure than the `.accessibleWhenUnlocked` option.
 
-See the list of all available [access options](https://github.com/dgynfi/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift).
+See the list of all available [access options](https://github.com/chenxing640/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift).
 
 
 #### Synchronizing keychain items with other devices
@@ -185,9 +187,9 @@ keychain.getData("key1", asReference: true)
 
 ## Demo
 
-`DYFSwiftKeychain` is learned how to use under this [Demo](https://github.com/dgynfi/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift).
+`DYFSwiftKeychain` is learned how to use under this [Demo](https://github.com/chenxing640/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift).
 
 
 ## Feedback is welcome
 
-If you notice any issue, got stuck or just want to chat feel free to create an issue. I will be happy to help you.
+If you notice any issue, got stuck to create an issue. I will be happy to help you.

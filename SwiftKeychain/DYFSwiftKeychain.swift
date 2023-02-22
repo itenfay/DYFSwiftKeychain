@@ -1,8 +1,8 @@
 //
 //  DYFSwiftKeychain.swift
 //
-//  Created by dyf on 2016/11/28. ( https://github.com/dgynfi/DYFSwiftKeychain )
-//  Copyright © 2016 dyf. All rights reserved.
+//  Created by chenxing on 2016/11/28. ( https://github.com/chenxing640/DYFSwiftKeychain )
+//  Copyright © 2016 chenxing. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@ open class DYFSwiftKeychain: NSObject {
     /// Records the status of the last operation result.
     @objc public var osStatus: OSStatus = errSecSuccess
     
-    /// Instantiates a DYFSwiftKeychain object.
+    /// Instantiates an `DYFSwiftKeychain` object.
     public override init() {
         super.init()
     }
@@ -71,14 +71,12 @@ open class DYFSwiftKeychain: NSObject {
     ///
     /// - Returns: A DYFSwiftKeychain object.
     @objc open override func copy() -> Any {
-        
         let keychain = DYFSwiftKeychain.createKeychain()
         keychain.accessGroup       = self.accessGroup
         keychain.synchronizable    = self.synchronizable
         keychain.serviceIdentifier = self.serviceIdentifier
         keychain.queryDictionary   = self.queryDictionary
         keychain.osStatus          = self.osStatus
-        
         return keychain
     }
     
@@ -90,13 +88,10 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the text was successfully written to the keychain, false otherwise.
     @discardableResult
     @objc public func add(_ value: String?, forKey key: String) -> Bool {
-        
         let opts = DYFSwiftKeychainAccessOptions.accessibleWhenUnlocked
-        
         return add(value, forKey: key, options: opts)
     }
     
-    @discardableResult
     /// Stores or updates the text value in the keychain item by the given key.
     ///
     /// - Parameters:
@@ -104,15 +99,13 @@ open class DYFSwiftKeychain: NSObject {
     ///   - key: The key which the text is stored in the keychain.
     ///   - options: The options indicates when you app needs access to the text in the keychain. By the default DYFSwiftKeychainAccessOptions.accessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
     /// - Returns: True if the text was successfully written to the keychain, false otherwise.
+    @discardableResult
     @objc public func add(_ value: String?, forKey key: String, options: DYFSwiftKeychainAccessOptions) -> Bool {
-        
         let v = value?.data(using: String.Encoding.utf8)
         let opts = toOpts(options)
-        
         return set(v, forKey: key, withAccess: opts)
     }
     
-    @discardableResult
     /// Stores or updates the text value in the keychain item by the given key.
     ///
     /// - Parameters:
@@ -120,10 +113,9 @@ open class DYFSwiftKeychain: NSObject {
     ///   - key: The key which the text is stored in the keychain.
     ///   - access: The parameter indicates when you app needs access to the text in the keychain. By the default DYFSwiftKeychain.AccessOptions.accessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
     /// - Returns: True if the text was successfully written to the keychain, false otherwise.
+    @discardableResult
     public func set(_ value: String?, forKey key: String, withAccess access: DYFSwiftKeychain.AccessOptions? = nil) -> Bool {
-        
         let v = value?.data(using: String.Encoding.utf8)
-        
         return set(v, forKey: key, withAccess: access)
     }
     
@@ -135,9 +127,7 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the data was successfully written to the keychain, false otherwise.
     @discardableResult
     @objc public func addData(_ value: Data?, forKey key: String) -> Bool {
-        
         let opts = DYFSwiftKeychainAccessOptions.accessibleWhenUnlocked
-        
         return addData(value, forKey: key, options: opts)
     }
     
@@ -150,9 +140,7 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the data was successfully written to the keychain, false otherwise.
     @discardableResult
     @objc public func addData(_ value: Data?, forKey key: String, options: DYFSwiftKeychainAccessOptions) -> Bool {
-        
         let opts = toOpts(options)
-        
         return set(value, forKey: key, withAccess: opts)
     }
     
@@ -165,7 +153,6 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the data was successfully written to the keychain, false otherwise.
     @discardableResult
     public func set(_ value: Data?, forKey key: String, withAccess access: DYFSwiftKeychain.AccessOptions? = nil) -> Bool {
-        
         // The lock prevents the code to be run simultaneously from multiple threads which may result in crashing.
         lock.lock()
         defer { lock.unlock() }
@@ -181,16 +168,13 @@ open class DYFSwiftKeychain: NSObject {
         let status = SecItemCopyMatching(query as CFDictionary, &ignore)
         
         guard status == errSecSuccess else {
-            
             if let v = value {
                 query[DYFSwiftKeychain.Constants.valueData] = v
                 queryDictionary?[DYFSwiftKeychain.Constants.valueData] = v
-                
                 osStatus = SecItemAdd(query as CFDictionary, nil)
             } else {
                 osStatus = errSecInvalidPointer // -67675, An invalid pointer was encountered.
             }
-            
             return osStatus == errSecSuccess
         }
         
@@ -198,7 +182,6 @@ open class DYFSwiftKeychain: NSObject {
             let updatedDictionary: [String: Any] = [
                 DYFSwiftKeychain.Constants.valueData: v
             ]
-            
             osStatus = SecItemUpdate(query as CFDictionary, updatedDictionary as CFDictionary)
         } else {
             deleteWithoutLock(key)
@@ -216,9 +199,7 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the boolean value was successfully written to the keychain, false otherwise.
     @discardableResult
     @objc public func addBool(_ value: Bool, forKey key: String) -> Bool {
-        
         let opts = DYFSwiftKeychainAccessOptions.accessibleWhenUnlocked
-        
         return addBool(value, forKey: key, options: opts)
     }
     
@@ -231,9 +212,7 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the boolean value was successfully written to the keychain, false otherwise.
     @discardableResult
     @objc public func addBool(_ value: Bool, forKey key: String, options: DYFSwiftKeychainAccessOptions) -> Bool {
-        
         let opts = toOpts(options)
-        
         return set(value, forKey: key, withAccess: opts)
     }
     
@@ -246,10 +225,8 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the boolean value was successfully written to the keychain, false otherwise.
     @discardableResult
     public func set(_ value: Bool, forKey key: String, withAccess access: DYFSwiftKeychain.AccessOptions? = nil) -> Bool {
-        
         let v = value ? "1" : "0"
         let data = v.data(using: String.Encoding.utf8)
-        
         return set(data, forKey: key, withAccess: access)
     }
     
@@ -259,16 +236,12 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: The text value from the keychain. Nil if unable to read the item.
     @discardableResult
     @objc public func get(_ key: String) -> String? {
-        
         if let data = getData(key) {
-            
             if let s = String(data: data, encoding: String.Encoding.utf8) {
                 return s
             }
-            
             osStatus = errSecInvalidEncoding // -67853, the encoding was not valid.
         }
-        
         return nil
     }
     
@@ -289,7 +262,6 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: The data from the keychain. Nil if unable to read the item.
     @discardableResult
     @objc public func getData(_ key: String, asReference: Bool = false) -> Data? {
-        
         lock.lock()
         defer { lock.unlock() }
         
@@ -323,11 +295,9 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: The boolean value from the keychain. False if unable to read the item.
     @discardableResult
     @objc public func getBool(_ key: String) -> Bool {
-        
         guard let bool = getBool(key) else {
             return false
         }
-        
         return bool
     }
     
@@ -337,7 +307,6 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: The boolean value from the keychain. Nil if unable to read the item.
     @discardableResult
     public func getBool(_ key: String) -> Bool? {
-        
         guard let data  = getData(key) else { return nil }
         
         guard let s = String(data: data, encoding: String.Encoding.utf8) else {
@@ -353,7 +322,6 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the item was successfully deleted, false otherwise.
     @discardableResult
     @objc public func delete(_ key: String) -> Bool {
-        
         lock.lock()
         defer { lock.unlock() }
         
@@ -368,7 +336,6 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if the item was successfully deleted, false otherwise.
     @discardableResult
     private func deleteWithoutLock(_ key: String) -> Bool {
-        
         var query: [String: Any] = supplyQueryDictionary()
         query[DYFSwiftKeychain.Constants.account] = key
         queryDictionary = query
@@ -383,13 +350,11 @@ open class DYFSwiftKeychain: NSObject {
     /// - Returns: True if all keychain items was successfully deleted, false otherwise.
     @discardableResult
     @objc public func clear() -> Bool {
-        
         lock.lock()
         defer { lock.unlock() }
         
         let query: [String: Any] = supplyQueryDictionary()
         queryDictionary = query
-        
         osStatus = SecItemDelete(query as CFDictionary)
         
         return osStatus == errSecSuccess // 0, no error.
@@ -400,7 +365,6 @@ open class DYFSwiftKeychain: NSObject {
     /// - Parameter shouldAddItem: Use `true` when the dictionary will be used with `SecItemAdd` or `SecItemUpadte` method. For getting and deleting items, use `false`
     /// - Returns: A query dictionary to modify the keychain item.
     private func supplyQueryDictionary(shouldAddItem: Bool = false) -> [String: Any] {
-        
         var query: [String: Any] = [
             DYFSwiftKeychain.Constants.kClass: kSecClassGenericPassword
         ]
@@ -566,7 +530,6 @@ extension DYFSwiftKeychain {
     /// - Parameter opts: A DYFSwiftKeychainAccessOptions value.
     /// - Returns: A DYFSwiftKeychain.AccessOptions value.
     private func toOpts(_ opts: DYFSwiftKeychainAccessOptions) -> DYFSwiftKeychain.AccessOptions? {
-        
         var options: DYFSwiftKeychain.AccessOptions? = nil
         
         switch opts {

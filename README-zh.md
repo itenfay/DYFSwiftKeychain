@@ -23,7 +23,7 @@ let p = keychain.get("kUserAccPasscode")
 ## QQ群 (ID:614799921)
 
 <div align=left>
-&emsp; <img src="https://github.com/dgynfi/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
+&emsp; <img src="https://github.com/chenxing640/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
 </div>
 
 
@@ -35,10 +35,12 @@ let p = keychain.get("kUserAccPasscode")
 use_frameworks!
 target 'Your target name'
 
-pod 'DYFSwiftKeychain', '~> 1.0.3'
+pod 'DYFSwiftKeychain'
+or
+pod 'DYFSwiftKeychain', '~> 1.1.0'
 ```
 
-或者从 [SwiftKeychain](https://github.com/dgynfi/DYFSwiftKeychain/tree/master/SwiftKeychain) 目录添加文件。
+或者从 [SwiftKeychain](https://github.com/chenxing640/DYFSwiftKeychain/tree/master/SwiftKeychain) 目录添加文件。
 
 
 ## 什么是 Keychain?
@@ -96,7 +98,7 @@ keychain.set("xxx", forKey:"Key1", withAccess: .accessibleWhenUnlocked)
 
 如果需要应用程序在后台访问钥匙串项，则可以使用 `.accessibleAfterFirstUnlock`。请注意，它比 `.accessibleWhenUnlocked` 选项更不安全。
 
-查看所有可用的 [访问选项](https://github.com/dgynfi/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift) 列表。
+查看所有可用的 [访问选项](https://github.com/chenxing640/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift) 列表。
 
 
 #### 将钥匙串项与其他设备同步
@@ -183,9 +185,9 @@ keychain.getData("key1", asReference: true)
 
 ## 演示
 
-`DYFSwiftKeychain` 在此 [演示](https://github.com/dgynfi/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift) 下学习如何使用。
+`DYFSwiftKeychain` 在此 [演示](https://github.com/chenxing640/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift) 下学习如何使用。
 
 
 ## 欢迎反馈
 
-如果你注意到任何问题，被卡住或只是想聊天，请随意制造一个问题。我乐意帮助你。
+如果你注意到任何问题被卡住，请创建一个问题。我乐意帮助你。
