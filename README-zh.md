@@ -1,6 +1,8 @@
+[English Vision](README.md) | 中文版
+
 ## DYFSwiftKeychain
 
-在钥匙串中存储文本和数据。你可能已经注意到苹果的 Keychain API 有点冗长。此库旨在提供较短的语法完成简单任务：读取/写入指定键的文本值：
+在钥匙串中存储文本和数据([Objective-C Version](https://github.com/chenxing640/DYFKeychain))。你可能已经注意到苹果的 Keychain API 有点冗长。此库旨在提供较短的语法完成简单任务：读取/写入指定键的文本值：
 
 ```Swift
 let keychain = DYFSwiftKeychain()
