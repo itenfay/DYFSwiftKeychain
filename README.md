@@ -2,7 +2,7 @@ English Vision | [中文版](README-zh.md)
 
 ## DYFSwiftKeychain
 
-This is used to store text and data in the Keychain([Objective-C Version](https://github.com/chenxing640/DYFKeychain)). As you probably noticed Apple's keychain API is a bit verbose. This library was designed to provide shorter syntax for accomplishing a simple task: reading/writing text values for specified keys:
+This is used to store text and data in the Keychain([Objective-C Version](https://github.com/itenfay/DYFKeychain)). As you probably noticed Apple's keychain API is a bit verbose. This library was designed to provide shorter syntax for accomplishing a simple task: reading/writing text values for specified keys:
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -25,7 +25,7 @@ The Keychain library includes the following features:
 ## Group (ID:614799921)
 
 <div align=left>
-&emsp; <img src="https://github.com/chenxing640/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
+&emsp; <img src="https://github.com/itenfay/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
 </div>
 
 
@@ -34,15 +34,15 @@ The Keychain library includes the following features:
 Using [CocoaPods](https://cocoapods.org):
 
 ``` 
-use_frameworks!
-target 'Your target name'
-
 pod 'DYFSwiftKeychain'
-or
-pod 'DYFSwiftKeychain', '~> 1.1.0'
 ```
 
-Or manually add the files from the [SwiftKeychain](https://github.com/chenxing640/DYFSwiftKeychain/tree/master/SwiftKeychain) directory.
+Or
+
+```
+pod 'DYFSwiftKeychain', '~> 1.2.0'
+
+Or manually add the files from the [SwiftKeychain](https://github.com/itenfay/DYFSwiftKeychain/tree/master/SwiftKeychain) directory.
 
 
 ## What's Keychain?
@@ -100,7 +100,7 @@ keychain.set("xxx", forKey:"Key1", withAccess: .accessibleWhenUnlocked)
 
 You can use `.accessibleAfterFirstUnlock` if you need your app to access the keychain item while in the background. Note that it is less secure than the `.accessibleWhenUnlocked` option.
 
-See the list of all available [access options](https://github.com/chenxing640/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift).
+See the list of all available [access options](https://github.com/itenfay/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift).
 
 
 #### Synchronizing keychain items with other devices
@@ -187,7 +187,7 @@ keychain.getData("key1", asReference: true)
 
 ## Demo
 
-`DYFSwiftKeychain` is learned how to use under this [Demo](https://github.com/chenxing640/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift).
+`DYFSwiftKeychain` is learned how to use under this [Demo](https://github.com/itenfay/DYFStore/blob/master/Classes/DYFStoreKeychainPersistence.swift).
 
 
 ## Feedback is welcome

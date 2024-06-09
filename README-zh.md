@@ -2,7 +2,7 @@
 
 ## DYFSwiftKeychain
 
-在钥匙串中存储文本和数据([Objective-C Version](https://github.com/chenxing640/DYFKeychain))。你可能已经注意到苹果的 Keychain API 有点冗长。此库旨在提供较短的语法完成简单任务：读取/写入指定键的文本值：
+在钥匙串中存储文本和数据([Objective-C Version](https://github.com/itenfay/DYFKeychain))。你可能已经注意到苹果的 Keychain API 有点冗长。此库旨在提供较短的语法完成简单任务：读取/写入指定键的文本值：
 
 ```Swift
 let keychain = DYFSwiftKeychain()
@@ -25,7 +25,7 @@ let p = keychain.get("kUserAccPasscode")
 ## QQ群 (ID:614799921)
 
 <div align=left>
-&emsp; <img src="https://github.com/chenxing640/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
+&emsp; <img src="https://github.com/itenfay/DYFSwiftKeychain/raw/master/images/g614799921.jpg" width="30%" />
 </div>
 
 
@@ -34,15 +34,16 @@ let p = keychain.get("kUserAccPasscode")
 使用 [CocoaPods](https://cocoapods.org):
 
 ``` 
-use_frameworks!
-target 'Your target name'
-
 pod 'DYFSwiftKeychain'
-or
-pod 'DYFSwiftKeychain', '~> 1.1.0'
 ```
 
-或者从 [SwiftKeychain](https://github.com/chenxing640/DYFSwiftKeychain/tree/master/SwiftKeychain) 目录添加文件。
+Or
+
+```
+pod 'DYFSwiftKeychain', '~> 1.2.0'
+```
+
+或者从 [SwiftKeychain](https://github.com/itenfay/DYFSwiftKeychain/tree/master/SwiftKeychain) 目录添加文件。
 
 
 ## 什么是 Keychain?
@@ -100,7 +101,7 @@ keychain.set("xxx", forKey:"Key1", withAccess: .accessibleWhenUnlocked)
 
 如果需要应用程序在后台访问钥匙串项，则可以使用 `.accessibleAfterFirstUnlock`。请注意，它比 `.accessibleWhenUnlocked` 选项更不安全。
 
-查看所有可用的 [访问选项](https://github.com/chenxing640/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift) 列表。
+查看所有可用的 [访问选项](https://github.com/itenfay/DYFSwiftKeychain/blob/master/SwiftKeychain/DYFSwiftKeychain.swift) 列表。
 
 
 #### 将钥匙串项与其他设备同步
@@ -187,7 +188,7 @@ keychain.getData("key1", asReference: true)
 
 ## 演示
 
-`DYFSwiftKeychain` 在此 [演示](https://github.com/chenxing640/DYFStore/blob/master/DYFStore/DYFStoreKeychainPersistence.swift) 下学习如何使用。
+`DYFSwiftKeychain` 在此 [演示](https://github.com/itenfay/DYFStore/blob/master/Classes/DYFStoreKeychainPersistence.swift) 下学习如何使用。
 
 
 ## 欢迎反馈

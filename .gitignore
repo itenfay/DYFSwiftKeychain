@@ -32,9 +32,8 @@ DerivedData/
 
 ## Others
 
+## MacOS
 .DS_Store
-*/.DS_Store
-*/*/.DS_Store
 
 ## Playgrounds
 timeline.xctimeline

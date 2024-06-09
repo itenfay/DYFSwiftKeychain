@@ -1,8 +1,8 @@
 //
 //  DYFSwiftKeychain.swift
 //
-//  Created by chenxing on 2016/11/28. ( https://github.com/chenxing640/DYFSwiftKeychain )
-//  Copyright © 2016 chenxing. All rights reserved.
+//  Created by Tenfay on 2016/11/28. (https://github.com/itenfay/DYFSwiftKeychain)
+//  Copyright © 2016 Tenfay. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ open class DYFSwiftKeychain: NSObject {
     @objc public var osStatus: OSStatus = errSecSuccess
     
     /// Instantiates an `DYFSwiftKeychain` object.
-    public override init() {
+    @objc public override init() {
         super.init()
     }
     
