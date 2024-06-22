@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "DYFSwiftKeychain"
-  spec.version      = "1.2.1"
+  spec.version      = "1.2.0"
   spec.summary      = "[Swift] A library for storing text and data in Keychain."
 
   spec.description  = <<-DESC

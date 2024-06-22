@@ -71,7 +71,7 @@ open class DYFSwiftKeychain: NSObject {
     ///
     /// - Returns: A DYFSwiftKeychain object.
     @objc open override func copy() -> Any {
-        let keychain = DYFSwiftKeychain.createKeychain()
+        let keychain = DYFSwiftKeychain.defaultKeychain()
         keychain.accessGroup       = self.accessGroup
         keychain.synchronizable    = self.synchronizable
         keychain.serviceIdentifier = self.serviceIdentifier
