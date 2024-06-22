@@ -1,22 +1,21 @@
 
 Pod::Spec.new do |spec|
-
   spec.name         = "DYFSwiftKeychain"
-  spec.version      = "1.2.0"
-  spec.summary      = "A library for storing text and data in Keychain. (Swift)"
+  spec.version      = "1.2.1"
+  spec.summary      = "[Swift] A library for storing text and data in Keychain."
 
   spec.description  = <<-DESC
-	    This library is used to store text and data in Keychain securely for iOS, OS X, tvOS and watchOS. (Swift)
-                   DESC
+  TODU: [Swift] This library is used to store text and data in Keychain securely for iOS, OS X, tvOS and watchOS.
+  DESC
 
   spec.homepage      = "https://github.com/itenfay/DYFSwiftKeychain"
   # spec.screenshots = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
   spec.license = { :type => "MIT", :file => "LICENSE" }
 
-  spec.author             = { "Tenfay" => "hansen981@126.com" }
+  spec.author             = { "Tenfay" => "itenfay@163.com" }
   # Or just: spec.author  = "Tenfay"
-  # spec.authors          = { "Tenfay" => "hansen981@126.com" }
+  # spec.authors          = { "Tenfay" => "itenfay@163.com" }
   # spec.social_media_url = "https://twitter.com/Tenfay"
 
   # spec.platform     = :ios
@@ -44,10 +43,10 @@ Pod::Spec.new do |spec|
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"
 
-  spec.swift_versions = ['4.2', '5.0']
+  #spec.swift_versions = ['4.2', '5.0']
+  spec.swift_version = '5.0'
   spec.requires_arc  = true 
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
-
 end

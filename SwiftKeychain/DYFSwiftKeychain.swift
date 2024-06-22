@@ -63,7 +63,7 @@ open class DYFSwiftKeychain: NSObject {
     /// Creates an instance of DYFSwiftKeychain with the class method.
     ///
     /// - Returns: An instance of DYFSwiftKeychain.
-    @objc public class func createKeychain() -> DYFSwiftKeychain {
+    @objc public class func defaultKeychain() -> DYFSwiftKeychain {
         return DYFSwiftKeychain()
     }
     
@@ -460,7 +460,6 @@ extension DYFSwiftKeychain {
     
     /// Constants used by the library
     public struct Constants {
-        
         /// Specifies an access group which is used to share keychain items between apps.
         public static var accessGroup: String {
             return toString(kSecAttrAccessGroup)
@@ -522,7 +521,6 @@ extension DYFSwiftKeychain {
         static func toString(_ value: CFString) -> String {
             return value as String
         }
-        
     }
     
     /// Converts a DYFSwiftKeychainAccessOptions value to a DYFSwiftKeychain.AccessOptions value.
@@ -564,7 +562,6 @@ extension DYFSwiftKeychain {
 
 /// Used to represent accessible access options.
 @objc public enum DYFSwiftKeychainAccessOptions: UInt8 {
-    
     /// The data in the keychain item can be accessed only while the device is unlocked by the user.
     ///
     /// This is recommended for items that need to be accessible only while the application is in the foreground. Items with this attribute migrate to a new device when using encrypted backups.
@@ -597,5 +594,4 @@ extension DYFSwiftKeychain {
     ///
     /// This is not recommended for application use. Items with this attribute do not migrate to a new device. Thus, after restoring from a backup of a different device, these items will not be present.
     case accessibleAlwaysThisDeviceOnly
-    
 }
